@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LLM vs Jev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF9F4; --card: #FFFFFF; --ink: #1D1F23; --muted: #6A6F78; --line: #E4DFD3;
+    --llm: #7C8595; --llm-soft: #EEF0F3; --jev: #0E9F6E; --jev-soft: #E3F5EC; --warn: #B7791F; --warn-soft: #FDF3DC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body { font-family: Inter, system-ui, sans-serif; color: var(--ink); }
+  #poster { position: relative; width: 1200px; height: 630px; background: var(--bg); overflow: hidden; }
+  #stage { position: absolute; inset: 0; }
+  .abs { position: absolute; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  #title { left: 40px; top: 20px; font-size: 27px; font-weight: 800; letter-spacing: -0.5px; }
+  #title span { color: var(--muted); font-weight: 600; }
+  #brand { right: 40px; top: 28px; font-size: 15px; color: var(--muted); }
+
+  #card { left: 40px; top: 68px; width: 1120px; height: 94px; background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; }
+  #msg { left: 70px; top: 18px; font-size: 19px; font-weight: 500; }
+  #env { left: 22px; top: 18px; }
+  #q { left: 22px; top: 54px; font-size: 16px; font-weight: 700; color: var(--muted); }
+  .chips { position: absolute; left: 300px; top: 50px; display: flex; gap: 12px; }
+  .chip { position: relative; height: 30px; padding: 0 14px; border-radius: 15px; border: 1.5px solid var(--line); background: #F6F4EE; font-size: 15px; font-weight: 600; line-height: 27px; }
+
+  .panel { top: 180px; width: 550px; height: 330px; background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; overflow: hidden; }
+  #pl { left: 40px; } #pr { left: 610px; }
+  .ph { position: absolute; left: 0; top: 0; right: 0; height: 64px; border-bottom: 1.5px solid var(--line); }
+  .pname { position: absolute; left: 22px; top: 11px; font-size: 22px; font-weight: 800; }
+  .psub { position: absolute; left: 22px; top: 38px; font-size: 13.5px; color: var(--muted); font-weight: 500; }
+  .timer { position: absolute; right: 22px; top: 15px; font-size: 26px; font-weight: 700; }
+  .pill { position: absolute; top: 14px; height: 24px; padding: 0 10px; border-radius: 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; line-height: 24px; }
+
+  #llmtext { left: 22px; top: 84px; width: 506px; font-size: 17px; line-height: 1.55; color: var(--ink); }
+  #cursor { display: inline-block; width: 9px; height: 19px; background: var(--ink); vertical-align: -3px; margin-left: 2px; }
+  #think { left: 22px; top: 86px; font-size: 17px; color: var(--muted); }
+  #parse { left: 22px; top: 262px; width: 506px; height: 46px; border-radius: 10px; background: var(--warn-soft); border: 1.5px solid #F1DDB0; }
+  #parse .code { position: absolute; left: 14px; top: 11px; font-size: 16px; }
+  #parse .tag { position: absolute; right: 12px; top: 12px; font-size: 12.5px; font-weight: 700; color: var(--warn); }
+
+  .row { position: absolute; left: 22px; width: 506px; height: 30px; }
+  .rlabel { position: absolute; left: 0; top: 3px; font-size: 16px; font-weight: 600; width: 104px; }
+  .track { position: absolute; left: 110px; top: 6px; width: 300px; height: 18px; border-radius: 9px; background: #F1EFE9; overflow: hidden; }
+  .fill { position: absolute; left: 0; top: 0; height: 18px; border-radius: 9px; background: #C9CDD4; }
+  .pval { position: absolute; left: 424px; top: 3px; font-size: 16px; font-weight: 700; }
+  #tick { position: absolute; left: 478px; top: 1px; }
+  #extra-label { left: 22px; top: 232px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: 0.6px; }
+  .xp { position: absolute; top: 256px; height: 34px; padding: 0 12px; border-radius: 10px; background: var(--jev-soft); border: 1.5px solid #BFE6D2; font-size: 14.5px; font-weight: 600; line-height: 31px; color: #0B6B4B; }
+
+  #tag { left: 0; width: 1200px; top: 524px; text-align: center; font-size: 34px; font-weight: 800; letter-spacing: -0.6px; }
+  #tag b { color: var(--jev); }
+  #foot { right: 40px; top: 596px; font-size: 13px; color: var(--muted); }
+  #stats-l, #stats-r { top: 580px; font-size: 15px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="poster">
+<div id="stage">
+  <div id="title" class="abs">Same ticket. <span>Two ways to answer.</span></div>
+  <div id="brand" class="abs mono">understanding-jev</div>
+
+  <div id="card" class="abs">
+    <svg id="env" class="abs" width="34" height="26" viewBox="0 0 34 26"><rect x="1.5" y="1.5" width="31" height="23" rx="4" fill="#fff" stroke="#1D1F23" stroke-width="2.5"/><path d="M3 4 L17 15 L31 4" fill="none" stroke="#1D1F23" stroke-width="2.5" stroke-linejoin="round"/></svg>
+    <div id="msg" class="abs">“My package arrived damaged and I want a refund.”</div>
+    <div id="q" class="abs">Which team should handle this?</div>
+    <div class="chips"><div class="chip" id="c0">Billing</div><div class="chip" id="c1">Shipping</div><div class="chip" id="c2">Technical</div><div class="chip" id="c3">General</div></div>
+  </div>
+
+  <div id="pl" class="abs panel">
+    <div class="ph">
+      <div class="pname">LLM</div>
+      <div class="psub">writes the answer, word by word</div>
+      <div class="pill" id="lpill"></div>
+      <div class="timer mono" id="lt">0.00 s</div>
+    </div>
+    <div id="think" class="abs mono">thinking</div>
+    <div id="llmtext" class="abs mono"><span id="lt-txt"></span><span id="cursor"></span></div>
+    <div id="parse" class="abs"><div class="code mono">parse(text) → "Shipping"</div><div class="tag">EXTRA STEP</div></div>
+  </div>
+
+  <div id="pr" class="abs panel">
+    <div class="ph">
+      <div class="pname" style="color:var(--jev)">Jev</div>
+      <div class="psub">picks the answer, in one step</div>
+      <div class="pill" id="rpill"></div>
+      <div class="timer mono" id="rt">0.00 s</div>
+    </div>
+    <div class="row" id="r0" style="top:84px"><div class="rlabel">Billing</div><div class="track"><div class="fill"></div></div><div class="pval mono">0.00</div></div>
+    <div class="row" id="r1" style="top:120px"><div class="rlabel">Shipping</div><div class="track"><div class="fill"></div></div><div class="pval mono">0.00</div>
+      <svg id="tick" width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" fill="#0E9F6E"/><path d="M8 14.5 L12.5 19 L20.5 9.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="row" id="r2" style="top:156px"><div class="rlabel">Technical</div><div class="track"><div class="fill"></div></div><div class="pval mono">0.00</div></div>
+    <div class="row" id="r3" style="top:192px"><div class="rlabel">General</div><div class="track"><div class="fill"></div></div><div class="pval mono">0.00</div></div>
+    <div id="extra-label" class="abs">SAME CALL, 3 MORE ANSWERS</div>
+    <div class="xp" id="x0" style="left:22px">wants refund · 0.97</div>
+    <div class="xp" id="x1" style="left:196px">urgent · 0.31</div>
+    <div class="xp" id="x2" style="left:322px">mood · annoyed</div>
+  </div>
+
+  <div id="tag" class="abs">LLMs write. <b>Jev decides.</b></div>
+  <div id="foot" class="abs">Timings from one side-by-side test. Yours will vary.</div>
+</div>
+</div>
+
+<script>
+// ─── States (seconds in a 9 s loop) ────────────────────────────────
+// S1 ASK     0.0–1.0  title + ticket + options appear
+// S2 SEND    1.0–1.4  both panels open, timers start at 1.4
+// S3 JEV     1.4–1.87 bars grow together, Shipping wins, 3 extra answers pop, Jev timer stops at 0.47 s
+// S4 LLM     1.4–5.6  "thinking…", then words type out, LLM timer stops at 4.20 s
+// S5 PARSE   5.6–6.2  the LLM's text still has to be parsed (extra step)
+// S6 VERDICT 6.2–8.6  tagline "LLMs write. Jev decides."
+// S7 RESET   8.6–9.0  fade to empty so the loop is seamless
+const DUR = 9, T0 = 1.4, JEV_S = 0.47, LLM_S = 4.2;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => 1 - Math.pow(1 - x, 3);
+const back = x => { const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const $ = id => document.getElementById(id);
+const show = (el, p, dy = 12) => { el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dy}px)`; };
+const pop = (el, p) => { el.style.opacity = clamp(p * 1.4); el.style.transform = `scale(${0.6 + 0.4 * back(p)})`; };
+
+const WORDS = ('This message is about a damaged delivery. The customer also wants a refund, ' +
+  'which could go to Billing, but the main problem is the shipment. So the best team is Shipping.').split(' ');
+const PROBS = [0.06, 0.88, 0.02, 0.04];
+const pill = (el, text, bg, fg) => { el.textContent = text; el.style.background = bg; el.style.color = fg; el.style.opacity = text ? 1 : 0; };
+
+window.__render = function (t) {
+  t = ((t % DUR) + DUR) % DUR;
+  const out = 1 - lin(t, 8.6, 9.0);
+  $('stage').style.opacity = out;
+
+  // S1
+  show($('title'), ease(lin(t, 0.0, 0.4)));
+  show($('brand'), ease(lin(t, 0.1, 0.5)));
+  show($('card'), ease(lin(t, 0.15, 0.55)));
+  for (let i = 0; i < 4; i++) pop($('c' + i), lin(t, 0.5 + i * 0.1, 0.8 + i * 0.1));
+
+  // S2
+  show($('pl'), ease(lin(t, 1.0, 1.35)), 18);
+  show($('pr'), ease(lin(t, 1.05, 1.4)), 18);
+
+  // Timers
+  const e = Math.max(0, t - T0);
+  const jt = Math.min(e, JEV_S), lt = Math.min(e, LLM_S);
+  $('rt').textContent = jt.toFixed(2) + ' s';
+  $('lt').textContent = lt.toFixed(2) + ' s';
+  const jevDone = e >= JEV_S, llmDone = e >= LLM_S;
+  $('rt').style.color = jevDone ? 'var(--jev)' : 'var(--ink)';
+  $('lt').style.color = llmDone ? 'var(--llm)' : 'var(--ink)';
+
+  // S3 Jev
+  const g = ease(lin(t, T0, T0 + JEV_S));
+  PROBS.forEach((p, i) => {
+    const r = $('r' + i), v = p * g;
+    r.querySelector('.fill').style.width = (300 * v) + 'px';
+    r.querySelector('.fill').style.background = (i === 1 && jevDone) ? 'var(--jev)' : '#C9CDD4';
+    r.querySelector('.pval').textContent = v.toFixed(2);
+    r.querySelector('.pval').style.color = (i === 1 && jevDone) ? 'var(--jev)' : 'var(--ink)';
+    r.querySelector('.rlabel').style.color = (i === 1 && jevDone) ? 'var(--jev)' : 'var(--ink)';
+  });
+  pop($('tick'), lin(t, T0 + JEV_S, T0 + JEV_S + 0.25));
+  show($('extra-label'), ease(lin(t, T0 + JEV_S, T0 + JEV_S + 0.2)), 6);
+  for (let i = 0; i < 3; i++) pop($('x' + i), lin(t, T0 + JEV_S + 0.02 * i, T0 + JEV_S + 0.25 + 0.02 * i));
+  $('c1').style.borderColor = jevDone ? '#0E9F6E' : 'var(--line)';
+  $('c1').style.background = jevDone ? 'var(--jev-soft)' : '#F6F4EE';
+  $('c1').style.color = jevDone ? '#0B6B4B' : 'var(--ink)';
+  if (t < T0) pill($('rpill'), '', '', '');
+  else if (!jevDone) pill($('rpill'), 'DECIDING', 'var(--jev-soft)', '#0B6B4B');
+  else pill($('rpill'), 'DONE · 4 ANSWERS', 'var(--jev)', '#fff');
+  $('rpill').style.left = '84px';
+
+  // S4 LLM
+  const typeA = T0 + 1.0, typeB = T0 + LLM_S - 0.25;
+  const thinking = t >= T0 && t < typeA;
+  $('think').style.opacity = thinking ? 1 : 0;
+  $('think').textContent = 'thinking' + '.'.repeat(1 + Math.floor(Math.max(0, t - T0) * 4) % 3);
+  const n = Math.round(WORDS.length * lin(t, typeA, typeB));
+  $('lt-txt').textContent = WORDS.slice(0, n).join(' ');
+  $('llmtext').style.opacity = t >= typeA ? 1 : 0;
+  $('cursor').style.opacity = (!llmDone && Math.floor(t * 3) % 2 === 0) ? 1 : 0;
+  if (t < T0) pill($('lpill'), '', '', '');
+  else if (!llmDone) pill($('lpill'), thinking ? 'THINKING' : 'WRITING', 'var(--llm-soft)', '#4A5261');
+  else pill($('lpill'), 'DONE · 1 ANSWER', 'var(--llm)', '#fff');
+  $('lpill').style.left = '88px';
+
+  // S5 parse
+  show($('parse'), ease(lin(t, T0 + LLM_S + 0.05, T0 + LLM_S + 0.45)), 10);
+
+  // S6 verdict
+  show($('tag'), ease(lin(t, 6.2, 6.7)), 14);
+  show($('foot'), ease(lin(t, 6.5, 6.9)), 6);
+};
+
+document.fonts.ready.then(() => {
+  window.__render(new URLSearchParams(location.search).has('capture') ? 0 : 7);
+  window.__ready = true;
+  if (!location.search.includes('capture')) {
+    const s = performance.now();
+    const loop = () => { window.__render((performance.now() - s) / 1000); requestAnimationFrame(loop); };
+    loop();
+  }
+});
+</script>
+</body>
+</html>

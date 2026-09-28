@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jev cheatsheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=block" rel="stylesheet">
+<style>
+  :root { --bg:#FBF9F4; --card:#FFFFFF; --ink:#1D1F23; --muted:#6A6F78; --line:#E4DFD3; --jev:#0E9F6E; --soft:#E3F5EC; --blue:#2563EB; --amber:#B45309; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); font-family:Inter, system-ui, sans-serif; color:var(--ink); }
+  #poster { width:1200px; padding:44px 44px 36px; background:var(--bg); }
+  h1 { font-size:44px; font-weight:800; letter-spacing:-1px; }
+  h1 span { color:var(--jev); }
+  .sub { font-size:19px; color:var(--muted); margin-top:6px; font-weight:500; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:28px; }
+  .box { background:var(--card); border:1.5px solid var(--line); border-radius:16px; padding:20px 22px; }
+  .wide { grid-column:1 / -1; }
+  h2 { font-size:14px; letter-spacing:1.2px; font-weight:800; color:var(--jev); margin-bottom:12px; }
+  p, li { font-size:16.5px; line-height:1.55; }
+  ul { list-style:none; }
+  li::before { content:"→ "; color:var(--muted); }
+  pre { font-family:'JetBrains Mono', monospace; font-size:14px; line-height:1.55; background:#F6F4EE; border-radius:10px; padding:14px 16px; white-space:pre; }
+  table { width:100%; border-collapse:collapse; font-size:16px; }
+  td, th { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-size:13px; color:var(--muted); letter-spacing:0.8px; font-weight:700; }
+  tr:last-child td { border-bottom:none; }
+  code { font-family:'JetBrains Mono', monospace; font-size:14.5px; background:#F1EFE9; padding:1px 6px; border-radius:5px; }
+  .yes li::before { content:"✓ "; color:var(--jev); font-weight:800; }
+  .no li::before { content:"✗ "; color:#C2410C; font-weight:800; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .foot { display:flex; justify-content:space-between; margin-top:22px; font-size:15px; color:var(--muted); font-weight:500; }
+  .big { font-size:26px; font-weight:800; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:5px; margin-right:8px; }
+</style>
+</head>
+<body>
+<div id="poster">
+  <h1>Jev <span>cheatsheet</span></h1>
+  <div class="sub">TypeSafe AI's decision model, on one page. It doesn't write. It decides.</div>
+
+  <div class="grid">
+    <div class="box">
+      <h2>WHAT IT IS</h2>
+      <ul>
+        <li>A "System One" model. Not a chatbot.</li>
+        <li>You send text + questions + options.</li>
+        <li>You get typed answers + probabilities.</li>
+        <li>Plus how sure it is (confidence).</li>
+        <li>No training needed. Works out of the box.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>THE NUMBERS</h2>
+      <table>
+        <tr><td>Speed</td><td><b>70–500 ms</b> per request</td></tr>
+        <tr><td>Input price</td><td><b>$0.042</b> per 1M tokens</td></tr>
+        <tr><td>Output price</td><td><b>Free</b></td></tr>
+        <tr><td>Max request</td><td>64K tokens · 255 options</td></tr>
+        <tr><td>Input type</td><td>Text / JSON only</td></tr>
+      </table>
+    </div>
+
+    <div class="box wide">
+      <h2>ONE CALL, THREE ANSWERS</h2>
+<pre>from typesafe_sdk import Choice, Noul, Score, TypeSafeClient
+
+client = TypeSafeClient()                       # reads TYPESAFE_API_KEY
+r = client.system_one(
+    state="My package arrived damaged and I want a refund.",
+    questions={
+        "team":   Choice(instructions="Which team should handle this",
+                         criteria={"billing": "Payments", "shipping": "Delivery issues", "tech": "Bugs"}),
+        "refund": Noul(instructions="The customer asks for a refund"),
+        "anger":  Score(instructions="How upset the customer is", criteria=["Calm", "Annoyed", "Very angry"]),
+    },
+)
+r.answers["team"].choice, r.answers["team"].confidence, r.answers["refund"].noul</pre>
+    </div>
+
+    <div class="box">
+      <h2>3 QUESTION TYPES</h2>
+      <table>
+        <tr><th>TYPE</th><th>LIKE</th><th>RETURNS</th></tr>
+        <tr><td><b>Choice</b></td><td>a switch</td><td><code>.choice</code> <code>.confidence</code></td></tr>
+        <tr><td><b>Score</b></td><td>a rating</td><td><code>.score</code> <code>.confidence</code></td></tr>
+        <tr><td><b>Noul</b></td><td>an if</td><td><code>.noul</code> (0 to 1)</td></tr>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>LET CONFIDENCE DECIDE</h2>
+      <table>
+        <tr><td><span class="dot" style="background:#0E9F6E"></span><b>High</b></td><td>Act automatically</td></tr>
+        <tr><td><span class="dot" style="background:#D97706"></span><b>Medium</b></td><td>Ask again or use a bigger LLM</td></tr>
+        <tr><td><span class="dot" style="background:#DC2626"></span><b>Low</b></td><td>Send to a human</td></tr>
+      </table>
+      <p style="margin-top:10px;color:var(--muted);font-size:15px">Pick thresholds from your own labeled data.</p>
+    </div>
+
+    <div class="box">
+      <h2>USE IT FOR</h2>
+      <ul class="yes">
+        <li>Routing tickets, models, tools</li>
+        <li>Spam, fraud, jailbreak checks</li>
+        <li>Rating relevance, quality, mood</li>
+        <li>Filtering RAG passages</li>
+        <li>Fast decisions in agents and games</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>DON'T USE IT FOR</h2>
+      <ul class="no">
+        <li>Writing text, code or summaries</li>
+        <li>Explaining "why"</li>
+        <li>Counting, dates, math (do it in code)</li>
+        <li>Images, audio, video (text only)</li>
+        <li>High-stakes calls on its own</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>5 GOLDEN RULES</h2>
+      <ul>
+        <li>Code owns the flow. Jev only judges.</li>
+        <li>One question = one judgment.</li>
+        <li>Describe every option clearly.</li>
+        <li>Send only what the decision needs.</li>
+        <li>Facts go in the state, not the model.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>SETUP</h2>
+<pre>pip install typesafe-sdk
+npm install @typesafe-ai/sdk
+
+# teach Claude Code to build with Jev
+claude plugin marketplace add typesafe-ai/skills
+claude plugin install typesafe@typesafe-ai
+
+# Codex, Cursor, Gemini CLI
+npx skills add typesafe-ai/skills --skill typesafe-ai</pre>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>github.com/Vedmeena21/understanding-jev</div>
+    <div>Made by Ved Prakash Meena · Facts as of Sep 2026</div>
+  </div>
+</div>
+<script>
+window.__render = () => {};
+document.fonts.ready.then(() => { window.__ready = true; });
+</script>
+</body>
+</html>
