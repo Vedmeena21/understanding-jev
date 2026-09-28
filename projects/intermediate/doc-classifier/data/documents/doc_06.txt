@@ -1,0 +1,5 @@
+Meera Joshi — Backend Engineer
+Experience: 4 years at Flipside (Go, Postgres, Kafka)
+Education: B.Tech, Computer Science, NIT Trichy
+Skills: Go, Python, Kubernetes, system design
+Projects: built a payments ledger handling 2M transactions/day

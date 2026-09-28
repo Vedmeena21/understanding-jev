@@ -1,0 +1,19 @@
+{
+  "goal": "Fix the failing login test in the auth service",
+  "messages": [
+    {"role": "user", "content": "The login test in auth/ is failing since yesterday. Can you fix it?"},
+    {"role": "assistant", "content": "I'll look at the auth service. Let me list the files first."},
+    {"role": "tool", "name": "list_files", "content": "auth/login.py\nauth/tokens.py\nauth/tests/test_login.py\nbilling/invoice.py\nbilling/tax.py\nREADME.md\nsetup.cfg\n... 212 more files"},
+    {"role": "assistant", "content": "Let me read the README to understand the project."},
+    {"role": "tool", "name": "read_file", "content": "# Acme Platform\nThis repo holds all Acme services: auth, billing, search and notifications. To run locally, install Docker, copy .env.example to .env, then run make dev. For billing, you also need a Stripe test key... (1,900 more characters about setup, billing and deploys)"},
+    {"role": "assistant", "content": "Now the failing test."},
+    {"role": "tool", "name": "run_tests", "content": "FAILED auth/tests/test_login.py::test_login_with_expired_token - AssertionError: expected 401, got 500\nTraceback: auth/tokens.py line 42 in decode_token: KeyError: 'exp'"},
+    {"role": "assistant", "content": "The error is a KeyError on 'exp' in tokens.py. Let me read that file."},
+    {"role": "tool", "name": "read_file", "content": "def decode_token(raw):\n    data = jwt.decode(raw, KEY, algorithms=['HS256'])\n    if data['exp'] < time.time():\n        raise Expired()\n    return data"},
+    {"role": "assistant", "content": "Tokens without an 'exp' field crash with KeyError instead of returning 401. I'll check billing too, just in case it uses tokens."},
+    {"role": "tool", "name": "read_file", "content": "def make_invoice(order):\n    total = sum(i.price for i in order.items)\n    tax = calc_tax(total)\n    return Invoice(total=total, tax=tax)\n... (120 more lines of billing code, no token use)"},
+    {"role": "assistant", "content": "Billing doesn't use tokens, so it's unrelated. Fix: use data.get('exp') and treat a missing exp as expired."},
+    {"role": "tool", "name": "edit_file", "content": "auth/tokens.py: replaced `if data['exp'] < time.time()` with `if data.get('exp', 0) < time.time()`"},
+    {"role": "tool", "name": "run_tests", "content": "auth/tests/test_login.py ....... 7 passed"}
+  ]
+}

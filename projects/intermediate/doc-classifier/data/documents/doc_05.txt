@@ -1,0 +1,5 @@
+ACCOUNT STATEMENT  01-Sep-2026 to 30-Sep-2026   IFSC: HDFC0001234
+Opening balance: 1,24,560.00
+02-Sep  UPI/Swiggy          Debit   450.00    Balance 1,24,110.00
+05-Sep  NEFT/Salary          Credit  56,900.00 Balance 1,81,010.00
+Closing balance: 1,63,212.40

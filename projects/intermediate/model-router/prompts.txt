@@ -1,0 +1,6 @@
+Fix the typo in this sentence: "Teh quick brown fox"
+Write a Python function that checks if a string is a palindrome.
+Our checkout service drops 2% of orders under load. Here are 6 files and the logs. Find the race condition and propose a fix.
+Translate "good morning" to French.
+Summarise this 2-page meeting note into 5 bullet points.
+Design a database schema for a multi-tenant SaaS with billing, roles and audit logs, and explain the trade-offs.

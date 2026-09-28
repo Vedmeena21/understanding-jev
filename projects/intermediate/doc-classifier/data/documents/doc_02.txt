@@ -1,0 +1,5 @@
+PAYSLIP - SEPTEMBER 2026
+Employee ID: EMP4471   Name: Priya Sharma   Designation: Data Analyst
+Earnings: Basic 40,000 | HRA 16,000 | Special Allowance 9,000
+Deductions: PF 4,800 | Professional Tax 200 | TDS 3,100
+Net pay: 56,900

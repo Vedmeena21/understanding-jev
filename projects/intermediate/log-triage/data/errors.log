@@ -1,0 +1,8 @@
+2026-09-29T02:14:03Z payments-api ERROR Timeout calling bank gateway after 30s (order 88213)
+2026-09-29T02:14:05Z payments-api ERROR Timeout calling bank gateway after 30s (order 88214)
+2026-09-29T02:15:11Z web WARN Image CDN slow: p95 1.8s
+2026-09-29T02:16:40Z auth ERROR JWT signature verification failed for 312 requests in 60s
+2026-09-29T02:17:02Z search WARN Index rebuild took 14 min (usual 9 min)
+2026-09-29T02:18:30Z orders-db ERROR Disk usage 96% on primary
+2026-09-29T02:19:12Z notifications INFO Retry succeeded for 4 emails
+2026-09-29T02:20:45Z payments-api ERROR Duplicate charge detected for customer 5521

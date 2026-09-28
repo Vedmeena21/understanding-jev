@@ -1,0 +1,6 @@
+TAX INVOICE   Invoice No: INV-2026-0912   GSTIN: 29ABCDE1234F1Z5
+Bill to: Ravi Kumar, Bengaluru
+1 x Wireless Mouse ....... ₹899.00
+1 x USB-C Hub ............ ₹1,499.00
+CGST 9% ₹215.82  SGST 9% ₹215.82
+Amount due: ₹2,829.64   Due date: 15 Oct 2026

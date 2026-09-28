@@ -1,0 +1,17 @@
+{
+  "small": {
+    "name": "your-small-model",
+    "good_for": "Short, simple, well-defined tasks: rewrite a sentence, classify, format, answer a fact",
+    "price_per_1m_output": 0.60
+  },
+  "medium": {
+    "name": "your-medium-model",
+    "good_for": "Normal coding and writing: a function, an email, a summary, a small bug",
+    "price_per_1m_output": 4.00
+  },
+  "frontier": {
+    "name": "your-frontier-model",
+    "good_for": "Hard work: multi-file changes, tricky bugs, long plans, deep reasoning, math proofs",
+    "price_per_1m_output": 25.00
+  }
+}

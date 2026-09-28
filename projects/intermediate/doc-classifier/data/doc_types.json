@@ -1,0 +1,42 @@
+{
+  "invoice": {
+    "what": "A bill from a seller asking for payment, with items, amounts, tax and a total",
+    "signals": ["Invoice No", "GSTIN", "Amount due", "Bill to"],
+    "not_for": "A salary slip or a bank statement"
+  },
+  "salary_slip": {
+    "what": "A monthly pay slip from an employer showing earnings, deductions and net pay",
+    "signals": ["Basic", "HRA", "PF", "Net pay", "Employee ID"],
+    "not_for": "An offer letter (that promises pay, it doesn't pay it)"
+  },
+  "bank_statement": {
+    "what": "A list of transactions on a bank account over a period, with a running balance",
+    "signals": ["Opening balance", "Debit", "Credit", "Closing balance", "IFSC"],
+    "not_for": "An invoice or a single receipt"
+  },
+  "offer_letter": {
+    "what": "A job offer from a company with role, start date and salary (CTC)",
+    "signals": ["We are pleased to offer", "CTC", "Date of joining"],
+    "not_for": "A salary slip"
+  },
+  "resume": {
+    "what": "A person's CV: experience, education and skills",
+    "signals": ["Experience", "Education", "Skills", "Projects"],
+    "not_for": "An offer letter"
+  },
+  "rent_agreement": {
+    "what": "A contract between a landlord and a tenant for renting a property",
+    "signals": ["Landlord", "Tenant", "Monthly rent", "Security deposit", "Lock-in"],
+    "not_for": "An invoice for rent (a bill, not a contract)"
+  },
+  "medical_bill": {
+    "what": "A bill from a hospital, clinic or pharmacy for treatment or medicines",
+    "signals": ["Patient name", "Consultation", "Pharmacy", "Room charges"],
+    "not_for": "An insurance policy"
+  },
+  "insurance_policy": {
+    "what": "An insurance document: policy number, cover amount, premium and who is insured",
+    "signals": ["Policy No", "Sum insured", "Premium", "Nominee"],
+    "not_for": "A medical bill"
+  }
+}
