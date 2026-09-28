@@ -1,6 +1,8 @@
-# 03 · Setup
+# Set up Jev everywhere
 
-[← 02 · How Jev works](02-how-jev-works.md) · Next: [04 · Build with Jev →](04-build-with-jev.md)
+[← Back to README](../README.md) · [All resources](README.md)
+
+Python, JavaScript, curl, Claude Code, Codex, Cursor, Gemini CLI, MCP, LangChain, Vercel AI SDK, and options with no API key.
 
 ---
 
@@ -85,7 +87,7 @@ print(response.answers["is_urgent"].noul)     # 1.0
 ```
 
 - The SDK uses `jev-latest` by default.
-- Full file: [`examples/quickstart.py`](../examples/quickstart.py)
+- Full file: [`lessons/02-your-first-call/code/first_call.py`](../lessons/02-your-first-call/code/first_call.py)
 - Docs: [Python SDK](https://docs.typesafe.ai/sdk/python.md)
 
 ---
@@ -116,7 +118,7 @@ console.log(response.answers.category.choice);
 ```
 
 - Also has `score()` and `noul()` helpers.
-- Full file: [`examples/quickstart.ts`](../examples/quickstart.ts)
+- Full file: [`lessons/02-your-first-call/code/first_call.ts`](../lessons/02-your-first-call/code/first_call.ts)
 - Docs: [JavaScript SDK](https://docs.typesafe.ai/sdk/javascript.md)
 
 ---
@@ -145,7 +147,7 @@ curl https://api.typesafe.ai/v1/systemone \
   }'
 ```
 
-Full file: [`examples/quickstart.sh`](../examples/quickstart.sh)
+Full file: [`lessons/02-your-first-call/code/first_call.sh`](../lessons/02-your-first-call/code/first_call.sh)
 
 ---
 
@@ -196,6 +198,17 @@ claude plugin update typesafe@typesafe-ai
 # Other agents
 npx skills update
 ```
+
+**Our 6 focused skills** (design, audit, options, thresholds, evals, migration):
+
+```bash
+claude plugin marketplace add Vedmeena21/understanding-jev
+claude plugin install jev-skills@vedmeena21
+# or, for Codex, Cursor, Gemini CLI and others
+npx skills add Vedmeena21/understanding-jev
+```
+
+More → [skills](../skills)
 
 **Any agent, no install:**
 Point it at the docs index: `https://docs.typesafe.ai/llms.txt`
@@ -374,6 +387,6 @@ python -m pip install laya
 curl -fsSL https://ollaya.dev/install.sh | sh
 ```
 
-More local options → [Open alternatives](../resources/repos.md#open-alternatives-run-it-yourself)
+More local options → [Open alternatives](repos.md#open-alternatives-run-it-yourself)
 
-Next: [04 · Build with Jev →](04-build-with-jev.md)
+Next: [Best practices →](best-practices.md)

@@ -1,6 +1,6 @@
-# 04 · Build with Jev
+# Best practices
 
-[← 03 · Setup](03-setup.md) · Next: [05 · Use cases →](05-use-cases.md)
+[← Back to README](../README.md) · [All resources](README.md)
 
 How to get good answers out of Jev.
 Based on TypeSafe's own guides and what builders learned in the first weeks.
@@ -194,4 +194,4 @@ Two more from independent tests:
 - [ ] Low-confidence answers go to a **human or a bigger model**
 - [ ] You **trace** decisions (LangSmith, Langfuse or your own logs)
 
-Next: [05 · Use cases →](05-use-cases.md)
+Next: [Use cases →](use-cases.md)

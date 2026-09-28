@@ -1,6 +1,6 @@
-# 07 · Reality check
+# Reality check
 
-[← 06 · Projects to build](06-projects.md) · [Back to README](../README.md)
+[← Back to README](../README.md) · [All resources](README.md)
 
 What's real. What's hype. What's next.
 

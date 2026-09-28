@@ -1,6 +1,6 @@
-# 05 · Use cases
+# Use cases
 
-[← 04 · Build with Jev](04-build-with-jev.md) · Next: [06 · Projects to build →](06-projects.md)
+[← Back to README](../README.md) · [All resources](README.md)
 
 Where Jev fits. Where people already use it.
 
@@ -154,4 +154,4 @@ Real recipes with numbers. All in the [TypeSafe cookbooks](https://docs.typesafe
 | Date extraction | Absolute and relative dates, done safely |
 | SDE cascade | 2-stage extraction that cuts reasoning costs |
 
-Next: [06 · Projects to build →](06-projects.md)
+Build one yourself: [projects →](../projects)
