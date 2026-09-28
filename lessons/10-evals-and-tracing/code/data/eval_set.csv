@@ -1,0 +1,21 @@
+message,label
+"CONGRATULATIONS! You've won a $1000 gift card. Click here to claim.",spam
+"Hi Ravi, can we move tomorrow's call to 4pm?",not_spam
+"Your account will be suspended. Verify your password at bit.ly/secure-login",spam
+"Invoice #2231 for September is attached. Thanks!",not_spam
+"Earn ₹50,000 a week from home!!! No experience needed.",spam
+"The build failed on main, can you take a look?",not_spam
+"You have 1 unclaimed parcel. Pay ₹25 customs fee here to release it.",spam
+"Lunch at 1? The new place near the office.",not_spam
+"Limited offer: cheap meds without prescription, discreet shipping.",spam
+"Reminder: your dentist appointment is on Friday at 10am.",not_spam
+"Dear winner, send your bank details to receive the lottery prize.",spam
+"Here are the slides from today's meeting.",not_spam
+"Hot singles in your area want to meet you tonight.",spam
+"Your Amazon order has shipped and arrives Thursday.",not_spam
+"Crypto doubling event! Send 1 BTC, get 2 BTC back instantly.",spam
+"Can you review my pull request when you're free?",not_spam
+"URGENT: your Netflix payment failed, update card at netfl1x-billing.com",spam
+"Happy birthday! Hope you have a great day.",not_spam
+"Make money fast with this one weird trick doctors hate.",spam
+"The quarterly report is due next Monday.",not_spam

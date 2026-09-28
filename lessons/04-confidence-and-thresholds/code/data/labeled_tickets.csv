@@ -1,0 +1,25 @@
+message,team
+"I was charged twice for my May invoice.",billing
+"My package arrived with a broken screen.",shipping
+"The app crashes every time I open settings.",technical
+"Do you have a student discount?",general
+"Where is my order? It's been 10 days.",shipping
+"Please cancel my subscription and refund this month.",billing
+"Login keeps saying 'invalid token' after the update.",technical
+"Can I change the delivery address for order #4471?",shipping
+"Your checkout page shows an error when I pay with UPI.",technical
+"Why did my plan price go up?",billing
+"Is there a way to talk to a human?",general
+"The courier marked it delivered but I got nothing.",shipping
+"I need a GST invoice for last month's payment.",billing
+"The export to CSV button does nothing.",technical
+"What are your support hours?",general
+"My refund still hasn't reached my bank.",billing
+"The box was open and one item is missing.",shipping
+"Notifications stopped working on Android.",technical
+"Do you ship to Nepal?",shipping
+"I got charged after I cancelled my trial.",billing
+"Can you add dark mode?",general
+"The API returns 500 errors since this morning.",technical
+"Wrong size delivered, I ordered M not XL.",shipping
+"How do I update my card details?",billing
