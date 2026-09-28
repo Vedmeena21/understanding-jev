@@ -1,0 +1,17 @@
+{
+  "name": "vedmeena21",
+  "owner": {
+    "name": "Ved Prakash Meena",
+    "url": "https://www.linkedin.com/in/ved-prakash-meena/"
+  },
+  "description": "Skills for building with Jev, TypeSafe AI's decision model.",
+  "plugins": [
+    {
+      "name": "jev-skills",
+      "source": "./",
+      "description": "Design Jev questions, find LLM calls to replace, improve options, pick thresholds, run evals and migrate code.",
+      "category": "development",
+      "keywords": ["jev", "typesafe", "decision-model", "classification", "routing", "evals"]
+    }
+  ]
+}

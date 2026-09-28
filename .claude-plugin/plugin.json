@@ -1,0 +1,20 @@
+{
+  "name": "jev-skills",
+  "version": "1.0.0",
+  "description": "Skills for building with Jev, TypeSafe AI's decision model: design questions, audit LLM calls, improve options, pick thresholds, run evals, migrate code.",
+  "author": {
+    "name": "Ved Prakash Meena",
+    "url": "https://www.linkedin.com/in/ved-prakash-meena/"
+  },
+  "repository": "https://github.com/Vedmeena21/understanding-jev",
+  "license": "MIT",
+  "keywords": ["jev", "typesafe", "decision-model", "classification", "routing", "evals"],
+  "skills": [
+    "./skills/jev-design",
+    "./skills/jev-audit",
+    "./skills/jev-options",
+    "./skills/jev-threshold",
+    "./skills/jev-eval",
+    "./skills/jev-migrate"
+  ]
+}
