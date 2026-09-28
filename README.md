@@ -1,29 +1,53 @@
-# Understanding Jev
+<p align="center">
+  <img src="assets/hero.gif" alt="An LLM writes its answer word by word in 4.2 seconds. Jev picks the answer in 0.47 seconds." width="100%">
+</p>
 
-**Everything about Jev in one place.**
-What it is. How it works. How to set it up. What to build with it.
-Plus the best repos, articles and tools, checked and sorted.
+<h1 align="center">Understanding Jev</h1>
 
-> Jev is an AI model that **doesn't write text**.
-> You give it some text, a question and a few options.
-> It picks an option, gives a probability for each one, and says how sure it is.
-> In about **0.1 to 0.5 seconds**.
+<p align="center">
+  <b>Learn it. Build with it. Understand how it works.</b><br>
+  Everything about Jev, TypeSafe AI's decision model, in one place.
+</p>
+
+<p align="center">
+  <a href="lessons"><img src="https://img.shields.io/badge/lessons-13-0E9F6E?style=flat-square" alt="13 lessons"></a>
+  <a href="projects"><img src="https://img.shields.io/badge/projects-10-2563EB?style=flat-square" alt="10 projects"></a>
+  <a href="skills"><img src="https://img.shields.io/badge/agent%20skills-6-B45309?style=flat-square" alt="6 skills"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-1D1F23?style=flat-square" alt="MIT license"></a>
+</p>
 
 ---
 
 ## Jev in 30 seconds
 
-| | |
-|---|---|
-| **What** | A "System One" decision model. Not a chatbot. Not an LLM that writes. |
-| **By** | [TypeSafe AI](https://typesafe.ai), founded by ex-OpenAI researcher Diogo Almeida |
-| **Launched** | 15 September 2026 (early access) |
-| **Input** | Text or JSON ("state") + typed questions |
-| **Output** | A choice, a score or a yes/no probability, plus confidence |
-| **Speed** | 70 to 500 ms per request (TypeSafe's number) |
-| **Price** | $0.042 per 1M input tokens. **Output is free.** |
-| **Limits** | Text only. 64K tokens per request. Up to 255 options per question. |
-| **Model name** | `jev-latest` (currently `jev-1.13.0`) |
+- Jev is an AI model that **doesn't write**. It **decides**.
+- You give it some text, a question and a few options.
+- It picks one, gives every option a probability, and tells you how sure it is.
+- Built by **TypeSafe AI**, founded by ex-OpenAI researcher Diogo Almeida. Launched **15 Sep 2026**.
+
+> LLMs write. Jev decides.
+
+---
+
+## Why is everyone talking about Jev?
+
+**1. It's fast.**
+An LLM takes seconds. Jev answers in milliseconds.
+
+**2. It's cheap.**
+You only pay for what you send in. Everything Jev sends back is free.
+
+**3. You can ask many questions at once.**
+One email, 5 questions. All 5 come back together, in one call.
+
+**4. It tells you how sure it is.**
+Every answer comes with a confidence score, trained to be honest.
+Very sure? Act on it. Not sure? Send it to a human.
+
+**5. It can't make up an answer.**
+It only picks from the options you give it. No surprise text. No broken format.
+
+It's not magic, though. [Here's what's hype and what's real →](resources/reality-check.md)
 
 ---
 
@@ -31,33 +55,86 @@ Plus the best repos, articles and tools, checked and sorted.
 
 | I want to... | Go to |
 |---|---|
-| Understand what Jev is, in plain words | [01 · What is Jev](docs/01-what-is-jev.md) |
-| See how it works inside | [02 · How Jev works](docs/02-how-jev-works.md) |
-| Make my first Jev call | [03 · Setup](docs/03-setup.md) |
-| Use Jev inside Claude Code, Codex, Cursor or Gemini CLI | [03 · Setup for coding agents](docs/03-setup.md#6-set-up-jev-in-your-coding-agent) |
-| Learn the right way to build with it | [04 · Build with Jev](docs/04-build-with-jev.md) |
-| Know where Jev fits in real companies | [05 · Use cases](docs/05-use-cases.md) |
-| Build a project for my portfolio | [06 · Projects to build](docs/06-projects.md) |
-| Know what's hype and what's real | [07 · Reality check](docs/07-reality-check.md) |
-| Find the best open-source Jev repos | [Resources · Repos](resources/repos.md) |
-| Read the best articles and talks | [Resources · Reading list](resources/reading-list.md) |
-| Run a Jev-like model on my own machine | [Resources · Open alternatives](resources/repos.md#open-alternatives-run-it-yourself) |
+| Understand Jev in plain words | [Lesson 01 · What is Jev](lessons/01-what-is-jev) |
+| Make my first call in 10 minutes | [Lesson 00 · Setup](lessons/00-setup) → [Lesson 02 · Your first call](lessons/02-your-first-call) |
+| Build something real | [Projects](projects) |
+| Set up Jev in Claude Code, Codex, Cursor, MCP or LangChain | [Setup everywhere](resources/setup-everywhere.md) |
+| Make my coding agent build with Jev for me | [Skills](skills) |
+| See how Jev works inside | [Lesson 12](lessons/12-how-jev-works-inside) → [Train a mini-Jev](projects/advanced/mini-jev) |
+| Know where Jev fits in real companies | [Use cases](resources/use-cases.md) |
+| Find the best Jev repos and articles | [Repos](resources/repos.md) · [Reading list](resources/reading-list.md) |
+| Get everything on one page | [Cheatsheet](assets/cheatsheet.png) |
 
 ---
 
-## The learning path
+## The roadmap
 
-| # | Chapter | What you'll learn |
+![The Jev roadmap: use it, build with it, understand it](assets/roadmap.svg)
+
+---
+
+## Lessons
+
+Short lessons. Simple words. Code you can run. A 3-question quiz at the end of each.
+
+| # | Lesson | | # | Lesson |
+|---|---|---|---|---|
+| 00 | [Setup](lessons/00-setup) | | 07 | [Jev in RAG](lessons/07-jev-in-rag) |
+| 01 | [What is Jev](lessons/01-what-is-jev) | | 08 | [Jev in agents](lessons/08-jev-in-agents) |
+| 02 | [Your first call](lessons/02-your-first-call) | | 09 | [Guardrails and safety](lessons/09-guardrails-and-safety) |
+| 03 | [Choice, Score and Noul](lessons/03-choice-score-noul) | | 10 | [Evals and tracing](lessons/10-evals-and-tracing) |
+| 04 | [Confidence and thresholds](lessons/04-confidence-and-thresholds) | | 11 | [Cost and speed math](lessons/11-cost-and-speed-math) |
+| 05 | [Writing great options](lessons/05-writing-great-options) | | 12 | [How Jev works inside](lessons/12-how-jev-works-inside) |
+| 06 | [Many questions, one call](lessons/06-many-questions-one-call) | | | |
+
+→ [All lessons](lessons)
+
+---
+
+## Projects
+
+10 projects you can run today. Each one has sample data, so it works right away.
+
+| | Project | What it does |
 |---|---|---|
-| 01 | [What is Jev](docs/01-what-is-jev.md) | LLM vs Jev. System 1 vs System 2. Who built it and why. |
-| 02 | [How Jev works](docs/02-how-jev-works.md) | State, questions, the 3 question types, confidence. What's likely inside. |
-| 03 | [Setup](docs/03-setup.md) | API key. Python, JavaScript, curl. Claude Code, Codex, Cursor, MCP, LangChain. |
-| 04 | [Build with Jev](docs/04-build-with-jev.md) | Golden rules. 4 patterns. Known weak spots and fixes. |
-| 05 | [Use cases](docs/05-use-cases.md) | 19 industries. 10 decision types. Real demos people built. |
-| 06 | [Projects to build](docs/06-projects.md) | 15 projects, beginner to advanced, each with a reference repo. |
-| 07 | [Reality check](docs/07-reality-check.md) | Official claims vs independent tests. Downsides. What's next. |
+| 🟢 | [Ticket router](projects/beginner/ticket-router) | Sends support emails to the right team |
+| 🟢 | [Review ratings](projects/beginner/review-ratings) | Turns reviews into "Camera 4.1 · Battery 3.2" |
+| 🟢 | [Spam checker](projects/beginner/spam-checker) | Spam, scam or phishing? And why |
+| 🟢 | [Comment moderator](projects/beginner/comment-moderator) | Keep, hide or reply to YouTube comments |
+| 🟡 | [Model router](projects/intermediate/model-router) | Sends each prompt to the cheapest model that can handle it |
+| 🟡 | [Document classifier](projects/intermediate/doc-classifier) | Labels documents with no training |
+| 🟡 | [Log triage](projects/intermediate/log-triage) | Turns error logs into an on-call summary |
+| 🔴 | [Context compactor](projects/advanced/context-compactor) | Shrinks agent memory without losing what matters |
+| 🔴 | [Snake bot](projects/advanced/snake-bot) | Jev plays Snake, one move at a time |
+| 🔴 | [Mini-Jev](projects/advanced/mini-jev) | Train your own tiny decision model on a laptop |
 
-Code you can run: [`examples/`](examples)
+→ [All projects](projects)
+
+---
+
+## Skills for your coding agent
+
+6 skills that teach Claude Code, Codex, Cursor and others to build with Jev.
+
+```bash
+# Claude Code
+claude plugin marketplace add Vedmeena21/understanding-jev
+claude plugin install jev-skills@vedmeena21
+
+# Codex, Cursor, Gemini CLI and others
+npx skills add Vedmeena21/understanding-jev
+```
+
+| Skill | Ask it to... |
+|---|---|
+| `jev-design` | Turn a decision in plain English into Jev questions and code |
+| `jev-audit` | Find LLM calls in your code that should be Jev calls |
+| `jev-options` | Fix weak options so answers get more accurate |
+| `jev-threshold` | Pick confidence thresholds from your data |
+| `jev-eval` | Compare Jev with your current LLM |
+| `jev-migrate` | Rewrite one LLM call into a Jev call |
+
+→ [About the skills](skills)
 
 ---
 
@@ -80,94 +157,46 @@ response = client.system_one(
             },
         ),
         "wants_refund": Noul(instructions="The customer asks for a refund"),
-        "anger": Score(
-            instructions="How upset the customer is",
-            criteria=["Calm", "Annoyed", "Very angry"],
-        ),
+        "anger": Score(instructions="How upset the customer is", criteria=["Calm", "Annoyed", "Very angry"]),
     },
 )
 
-print(response.answers["team"].choice)       # "shipping"
-print(response.answers["team"].confidence)   # e.g. 0.9
-print(response.answers["wants_refund"].noul) # e.g. 0.97
+print(response.answers["team"].choice)        # shipping
+print(response.answers["team"].confidence)    # how sure, 0 to 1
+print(response.answers["wants_refund"].noul)  # chance it's a yes, 0 to 1
 ```
 
-- One request.
-- Three questions answered **in parallel**.
-- No text to parse. The answer is always one of your options.
+---
+
+## Cheatsheet
+
+<a href="assets/cheatsheet.png"><img src="assets/cheatsheet.png" alt="Jev cheatsheet" width="420"></a>
+
+Everything on one page. Save it. Share it.
 
 ---
 
-## Best repos (preview)
-
-Only repos with **300+ stars**, or official ones. Stars as of 29 Sep 2026.
-
-| Repo | What it is | ⭐ |
-|---|---|---|
-| [typesafe-ai/skills](https://github.com/typesafe-ai/skills) | **Official.** Teaches Claude Code, Codex and Cursor to build with Jev | 2.3k |
-| [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) | Fastest and cheapest web agent, built by Browser Use | 21.1k |
-| [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) | Claude Code plugin: Jev decides which old messages to drop | 7.1k |
-| [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) | Open-source decision model. Runs locally. 100+ languages | 27.6k |
-| [jaredpalmer/kev](https://github.com/jaredpalmer/kev) | Jev-like models on Qwen that you can train and run yourself | 7.6k |
-| [TianyuCodings/NanoJev](https://github.com/TianyuCodings/NanoJev) | A tiny Jev replica with the full training pipeline. Best to learn from | 2.3k |
-| [dzhng/jevgrep](https://github.com/dzhng/jevgrep) | Find code by asking what it does | 1.3k |
-| [kyotofin/tax-doc-classifier](https://github.com/kyotofin/tax-doc-classifier) | Classifies 261 IRS tax forms at ~$0.001 per page | 473 |
-
-**Full list, 40+ repos by category** → [resources/repos.md](resources/repos.md)
-
----
-
-## Best reads (preview)
-
-| Read | Why |
-|---|---|
-| [Introducing System One Models and Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) | The official launch post |
-| [Simon Willison: Jev introduces a new shape of LLM](https://simonwillison.net/2026/Sep/21/jev/) | An honest hands-on take, with criticisms |
-| [Latent Space: System One models for Prod, not God](https://www.latent.space/p/jev) | The founder explains the thinking |
-| [Jev after eight days of independent tests](https://dev.to/aws-builders/jev-after-eight-days-of-independent-tests-level-with-mid-price-llms-behind-the-frontier-1c60) | Real numbers vs 19 LLMs |
-| [TypeSafe docs](https://docs.typesafe.ai/introduction) | API, patterns and 19 cookbooks |
-
-**Full reading list** → [resources/reading-list.md](resources/reading-list.md)
-
----
-
-## Reality check
-
-- TypeSafe says: **40x to 200x faster** than LLMs on System One tasks.
-- The most careful independent test found about **2.9x faster** and **12x cheaper** than Claude Haiku 4.5.
-- Still fast and cheap. Just not magic.
-- It's great at yes/no and few-option decisions.
-- It's weaker at counting, dates, numbers and non-English text.
-
-More → [07 · Reality check](docs/07-reality-check.md)
-
----
-
-## Repo map
+## What's in this repo
 
 ```
 understanding-jev/
-├── README.md              ← you are here
-├── docs/
-│   ├── 01-what-is-jev.md
-│   ├── 02-how-jev-works.md
-│   ├── 03-setup.md
-│   ├── 04-build-with-jev.md
-│   ├── 05-use-cases.md
-│   ├── 06-projects.md
-│   └── 07-reality-check.md
-├── examples/
-│   ├── quickstart.py
-│   ├── quickstart.ts
-│   ├── quickstart.sh
-│   └── review_ratings.py
-└── resources/
-    ├── repos.md
-    └── reading-list.md
+├── lessons/        13 lessons, each with code and a quiz
+├── projects/       10 runnable projects: beginner, intermediate, advanced
+├── skills/         6 agent skills for Claude Code, Codex, Cursor and more
+├── resources/      setup everywhere, best practices, use cases, reality check, repos, reading
+└── assets/         hero GIF, roadmap, cheatsheet (and how they were made)
 ```
 
 ---
 
-Made by [Ved Prakash Meena](https://www.linkedin.com/in/ved-prakash-meena/). Follow for more AI resources.
+## Contributing
 
-Found a great Jev repo or article? Open an issue or a PR.
+Found a mistake? Built something with Jev? Know a great article?
+Open an issue or a pull request.
+
+---
+
+<p align="center">
+  Made by <a href="https://www.linkedin.com/in/ved-prakash-meena/">Ved Prakash Meena</a>. Follow for more AI resources.<br>
+  <sub>Not affiliated with TypeSafe AI. Facts as of September 2026.</sub>
+</p>

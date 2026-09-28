@@ -2,3 +2,12 @@
 __pycache__/
 .env
 node_modules/
+package*.json
+stills/
+
+# files the projects create when you run them
+projects/beginner/ticket-router/routed.csv
+projects/advanced/context-compactor/compacted.json
+projects/advanced/mini-jev/data/train.jsonl
+projects/advanced/mini-jev/data/test.jsonl
+projects/advanced/mini-jev/*.pt
