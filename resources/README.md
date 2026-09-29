@@ -10,6 +10,7 @@ Everything else worth knowing about Jev, checked and sorted.
 | [`reality-check.md`](reality-check.md) | Official claims vs independent tests. Downsides. What's next |
 | [`repos.md`](repos.md) | 50 open-source Jev repos in 9 groups. Only 300+ stars, or official |
 | [`reading-list.md`](reading-list.md) | Official docs, deep dives, independent tests, tutorials, research |
+| [`jev-engineering-for-coding-agents.pdf`](jev-engineering-for-coding-agents.pdf) | 12-page study note on building coding agents around Jev, based on Diogo Almeida's design notes |
 
 ## How we choose
 

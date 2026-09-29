@@ -95,6 +95,8 @@ It picks a tool, catches a dangerous `DELETE` step, and chooses a model size.
 - [AgentiLoop/Agent](https://github.com/AgentiLoop/Agent): Jev checks shell commands before they run
 - LangChain's `AutoModeMiddleware` blocks risky tool calls with Jev ([docs](https://docs.langchain.com/oss/python/integrations/providers/typesafe))
 
+Go deeper: [Jev engineering for coding agents](../../resources/jev-engineering-for-coding-agents.pdf) (12-page PDF)
+
 ---
 
 ## Quiz
